@@ -1,0 +1,5 @@
+def make_diff(old, new):
+    return '\n'.join([ l for l in unified_diff(old.split('\n'),new.split('\n')) if l.startswith('+') or l.startswith('-') ])
+
+
+Df_descriptive["diff"]=Df_descriptive.apply(lambda x: make_diff(Df_descriptive.text_old, Df_descriptive.text_new), axis=1)
